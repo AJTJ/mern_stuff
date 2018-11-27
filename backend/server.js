@@ -44,6 +44,7 @@ router.get("/getData", (req, res) => {
 // overwrites data in the database
 router.post("/updateData", (req, res) => {
   const { id, update } = req.body;
+  console.log(id, update);
   Data.findOneAndUpdate(id, update, err => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true });
@@ -63,6 +64,7 @@ router.delete("/deleteData", (req, res) => {
 // the create method
 // this method adds new data in the db
 router.post("/putData", (req, res) => {
+  console.log("post", req.body);
   let data = new Data();
   const { id, message } = req.body;
   if ((!id && id !== 0) || !message) {
@@ -80,9 +82,7 @@ router.post("/putData", (req, res) => {
 });
 
 // append /api for http requests
-
 app.use("/api", router);
 
 // launch our backend into a port
-
 app.listen(API_PORT, () => console.log(`listening on port ${API_PORT}`));

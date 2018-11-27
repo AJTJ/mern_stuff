@@ -4,12 +4,14 @@ const bodyParser = require("body-parser");
 const logger = require("morgan");
 const Data = require("./data");
 
+const myMongoDB = require("./private");
+
 const API_PORT = 3001;
 const app = express();
 const router = express.Router();
 
 // the Mongo DB
-const dbRoute = "mongodb://thelo:oyoyoy1@ds129144.mlab.com:29144/full_stack_db";
+const dbRoute = myMongoDB;
 
 // to connect with MongoDB
 mongoose.connect(
